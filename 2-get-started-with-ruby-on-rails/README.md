@@ -93,7 +93,7 @@ grant all privileges on simple_cms_development.* to 'username'@'localhost'
 Start up the project
 
 ```
-$ /simple-cms# rails server
+$ /simple-cms# rails server -b 0.0.0.0
 => Booting Puma
 => Rails 6.1.4.1 application starting in development
 => Run `bin/rails server --help` for more startup options
@@ -120,3 +120,77 @@ which will install the:
 - `webpacker.yml` configuration
 - `node_modules`
 - other good things
+
+## Generate a Controller and View
+
+Generate a control and view using the `rails generate` command:
+
+```
+$ /simple-cms#rails generate controller index
+```
+
+- `rails generate` 
+- `controller`
+- `index` is the list of Views/Actions that will be generated
+
+## Examine how Server Requests are Handled
+
+When a request comes in the following process:
+
+- Web Server checks `/public` first
+- Rails Routing parses URL to determine `controller#action`
+- Controller manages request
+- Response is rendered and returned by Web Server
+
+### Static Files
+
+Static files in `/public` can be in any hierarchy/depth and it will match the URL if the file exists.  
+
+> `/public/demo/index` will override the `demo/index` route configured to the `Demo#index` controller.   SO BE CAREFUL OF THIS!
+
+## Define Routes in a Ruby on Rails Project
+
+Multiple route types:
+
+### Simple Match Route
+
+Is found in the `routes.rb` file and looks like:
+
+- `get "demo/index"` (shorthand)
+- `match "demo/index", :to => "demo#index", :via => :get` which let's us use different route to controler
+
+### Default Route
+
+Default routes have basic structure `:controller/:action/:id`.
+
+For the request: `GET /students/edit/52` it would attempt:
+- StudentsController
+- #edit
+- 52
+
+the way they are added:
+
+```
+# Simple format
+get ':controller(/:action(/:id))
+
+# Match format
+match ':controller(/:action(:/id))', :via => :get
+```
+
+> This is the old style of adding routes, before resource routing. 
+
+> Items in brackets are optional.
+
+### Root Route
+
+The home page of the app, usually at the very top:
+
+```
+# Short 
+root "controller#action"
+
+# Match format
+match "/", :to => "controller#action", :via => :get
+```
+
