@@ -1,0 +1,5 @@
+<h1><%= @subject.name %> (<%= @subject.position%>)</h1>
+
+<br/>
+<%= link_to('Edit', edit_subject_path(@subject.id)) %>
+<%= link_to('All Subjects', subjects_path) %>

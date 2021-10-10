@@ -1,0 +1,7 @@
+<h1>Subjects#index</h1>
+<p>Find me in app/views/subjects/index.html.erb</p>
+
+<br/>
+<% @subjects.each do |s| %>
+<%= link_to(s.name, subject_path(s.id)) if s.visible %>
+<% end %>
