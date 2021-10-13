@@ -1,2 +1,14 @@
-<h1>Subjects#edit</h1>
-<p>Find me in app/views/subjects/edit.html.erb</p>
+<p>
+<%= link_to('<< Back to Subjects', subjects_path) %>
+</p>
+
+<h2>Edit Subject</h2>
+
+<%= form_for(@subject, :url => subject_path, :method => 'patch') do |f| %>
+
+<%= render(partial: 'form', locals: { f: f }) %>
+
+<div class="form-buttons">
+  <%= f.submit("Save")%>
+</div>
+<% end %>

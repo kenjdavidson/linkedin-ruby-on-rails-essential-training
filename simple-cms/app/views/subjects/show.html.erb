@@ -1,5 +1,24 @@
-<h1><%= @subject.name %> (<%= @subject.position%>)</h1>
+<p>
+<%= link_to('<< Back to Subjects', subjects_path) %>
+</p>
 
-<br/>
-<%= link_to('Edit', edit_subject_path(@subject.id)) %>
-<%= link_to('All Subjects', subjects_path) %>
+<h2><%= @subject.name %> (<%= @subject.position%>)</h2>
+
+<table summary="Display subject details">
+  <tr>
+    <th>Visible?</th>
+    <td><%= @subject.visible ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+    <th>Created</th>
+    <td><%= @subject.created_at %></td>
+  </tr>   
+  <tr>
+    <th>Updated</th>
+    <td><%= @subject.updated_at %></td>
+  </tr>  
+</table>
+
+<p>
+<%= link_to("Edit", edit_subject_path(@subject), :class => 'action edit') %>
+</p>
