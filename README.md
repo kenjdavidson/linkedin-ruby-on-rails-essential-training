@@ -9,49 +9,31 @@ Faster, better, less painful website development.
 - Handle web requests
 - Manage data in database
 
-## Using the Exercies Files
+## Challenge: Simple CMS
 
-Each chapter has exercise files accompanying them, each of them will be copied and extracted into the folder `<chapter#>/course` which can then be used as the application directory of the sample docker application.
+To get the challenge project Simple CMS up and running use the provided Docker image
 
-Example files are not included in the Git repository, they must be downloaded to their applicable folder and extracted.
+> It's a super shady, non-standard, non-compose Docker image that was thrown together quickly.  I get it, no hate mail please!
 
-### Image
-
-A crudly built **Docker** image can be used for getting Rails and Mysql (MariaDB) up and running:
+### Build and Run
 
 ```
 $> docker build -t rails-essential-training .
-[+] Building 37.0s (7/7) FINISHED
-$>
+$> docker run -v ${pwd}/simple-cms:/simple-cms -p 3000:3000 -it rails-essential-training /bin/bash
 ```
 
-> The image will need updates based on the project configuration, but for the most part it leaves a lot of manual processing just to make things a little more dynamic and allow for accessing all the different example projects without modification.
+You'll get a container with:
 
-### Container
+- Ruby 2.6
+- Maria DB
+- `bundle install` run
+- `yarn install` run
+- `rails db:migrate` run
 
-Once built you can get into the working environment by running
-
-```
-$> cd 2-get-started-with-ruby-on-rails/Ex_Files_Ruby_Rails_6_Esst_Ch_2/Exercise Files/Chapter_02/02_02/simple_cms
-$> docker run -v ${pwd}:/simple-cms -it --rm rails-essential-training /bin/bash
-$ /simple-cms# service mysql start
-[ ok ] Starting MariaDB database 
-$ /simple-cms# 
-```
-
-> Mysql (MariaDB) needs to be started manually at this point.  It would be cooler if the project was setup to run
-> Rails and Mysql separately, but that would involve a bunch of changes to the example files that I thought would
-> be annoying when pulling them from the course site.
-
-### Configuring the Project
-
-At this point only the actual project/working files are being `volumized` (for lack of a better term). When starting up each environment the dependencies and database need to be brought up to the appropriate version.
+and then provided the iteractive terminal.  Once there startup Rails with
 
 ```
-$ /simple-cms# bundle install
-$ /simple-cms# rails otl:import
+$ /simple-cms > rails server -b 0.0.0.0
 ```
 
-> Which actually doesn't work as it's explained on the **Using the exercise files** section (hopefully just chapter 2).
-
-> Look into adding `/usr/local/bundle/gems` as a `volume` to maintain the dependencies across restarts and projects.
+And you should be good to go.
