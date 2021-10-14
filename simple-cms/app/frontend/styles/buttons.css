@@ -1,0 +1,4 @@
+
+a[role="button"] {
+    @apply inline-block mx-4 my-2 px-4 py-2 rounded-md bg-yellow-400 border-yellow-700 border-2;
+}

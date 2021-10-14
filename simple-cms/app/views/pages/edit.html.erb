@@ -1,2 +1,14 @@
-<h1>Pages#edit</h1>
-<p>Find me in app/views/pages/edit.html.erb</p>
+<p>
+<%= link_to("<< Back to #{@subject.name}", subject_path(@subject)) %>
+</p>
+
+<h2>Edit Page</h2>
+
+<%= form_for(@page, :url => subject_page_path(@subject), :method => 'patch') do |f| %>
+
+<%= render(partial: 'form', locals: { f: f }) %>
+
+<div class="form-buttons">
+  <%= f.submit("Save")%>
+</div>
+<% end %>

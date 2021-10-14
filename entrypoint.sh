@@ -19,5 +19,8 @@ bundle install
 # Run node install
 yarn install
 
+# Migrate railes
+rails db:migrate
+
 # Run the arguments provided
 exec "$@"

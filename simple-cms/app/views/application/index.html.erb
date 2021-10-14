@@ -1,0 +1,11 @@
+
+<h2>Pages</h2>
+<% @pages.each do |page| %>
+<div>
+    <h3><%= page.name %></h3>
+    <h5><%= page.subject.name %></h5>
+    <p>
+        <%= page.content %>
+    </p>
+</div>
+<% end %>

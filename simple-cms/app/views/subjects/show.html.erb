@@ -18,7 +18,32 @@
     <td><%= @subject.updated_at %></td>
   </tr>  
 </table>
-
 <p>
-<%= link_to("Edit", edit_subject_path(@subject), :class => 'action edit') %>
+<%= link_to("Edit", edit_subject_path(@subject), class: 'action edit', 'data-role': 'button') %>
+</p>
+
+<h2>Pages</h2>
+<table summary="Display subject pages">
+  <tr>
+    <th>#</th>
+    <th>Page Name</th>    
+    <th>Permalink</th>
+    <th>Visible</th>
+    <th>Actions</th>
+  </tr>
+  <% @subject.pages.each do |page| %>
+  <tr>
+    <td><%= page.position %></td>
+    <td><%= page.name %></td>
+    <td><%= page.permalink %></td>
+    <td><%= page.visible ? 'Yes' : 'No' %></td>
+    <td class="center">
+      <%= link_to("Edit", edit_subject_page_path(page.subject, page), :class => 'action edit') %>
+      <%= link_to("Delete", subject_page_path(page.subject, page), method: :delete, :class => 'action delete') %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<p>
+<%= link_to("Add Page", new_subject_page_path(@subject)) %>
 </p>

@@ -1,2 +1,14 @@
-<h1>Pages#new</h1>
-<p>Find me in app/views/pages/new.html.erb</p>
+<p>
+<%= link_to("<< Back to #{@subject.name}", subject_path(@subject)) %>
+</p>
+
+<h2>Add Pages</h2>
+
+<%= form_for(@page, :url => subject_pages_path(@subject), :method => 'post') do |f| %>
+
+<%= render(partial: 'form', locals: { f: f }) %>
+
+<div class="form-buttons">
+  <%= f.submit("Create")%>
+</div>
+<% end %>

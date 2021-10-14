@@ -195,3 +195,14 @@ Although there is a `Subject.delete` and `Subject.destroy` but **ALWAYS** use th
 - controller actions
 
 2. Try writing without looking at SubjectsController
+
+3. Try writing Pages within namespace of a subject.  For example, pages are added to subject so the route should be something like:
+
+```
+GET /subjects/:subject_id/pages
+GET /subjects/:subject_id/pages/:id
+GET /subjects/:subject_id/pages/new
+POST /subjects/:subject_id/pages
+PATCH /subjects/:subject_id/pages/:id
+DELETE /subjects/:subject_id/pages/:id
+```

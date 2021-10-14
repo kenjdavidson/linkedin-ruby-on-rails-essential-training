@@ -1,0 +1,3 @@
+h2 {
+    @apply sm:text-2xl lg:text-3xl;
+}
