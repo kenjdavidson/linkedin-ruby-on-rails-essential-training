@@ -210,7 +210,7 @@ Attempt to complete some random ideas:
 - [ ] pages/show use text or sanitation helper on the content
 - [ ] subjects/_form use a select tag for the position
 - [x] subjects/_form use radio buttons for whether it should be visible
-- [ ] pages/_form use a select tag for a subject_id
+- [ ] pages/_form use a select tag for a subject_id - the way I did this was allow only editing/adding of pages directly to a subject.  I could probably add a "move" subject, but at this point in time I'll skip it.
 - [ ] pages/_form use a select tag for position
 - [x] pages/_form use a checkbox for visible
 

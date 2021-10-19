@@ -57,4 +57,5 @@ private
   def subject_params
     params.require(:subject).permit(:name, :position, :visible)
   end 
+
 end
