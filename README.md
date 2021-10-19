@@ -34,7 +34,8 @@ To get the challenge project Simple CMS up and running use the provided Docker i
 
 ```
 $> docker build -t rails-essential-training .
-$> docker run -v ${pwd}/simple-cms:/simple-cms -p 3000:3000 -it rails-essential-training /bin/bash
+$> docker run --name rails-essential-training -v ${pwd}/simple-cms:/simple-cms -p 3000:3000 -it rails-essential-training /bin/bash
+$> docker start rails-essential-training
 ```
 
 You'll get a container with:
@@ -53,9 +54,12 @@ $ /simple-cms > rails server -b 0.0.0.0
 
 And you should be good to go.
 
-### Tailwind CSS
+### Frontend
 
-I've also included playing around with Tailwind CSS (actually just getting it working was a task in and of itself).
+I've also included playing around with Tailwind CSS (actually just getting it working was a task in and of itself).  To do this there were a few main things:
+
+1. I renamed the `javascript` folder to `frontend`.  It felt weird to me putting a `css` folder and assets under a folder named `javascript`.
+2. 
 
 ## Models and Associations
 

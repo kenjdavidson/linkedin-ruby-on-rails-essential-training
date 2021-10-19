@@ -7,7 +7,14 @@ module.exports = {
   },
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        info: colors.blue,
+        warning: colors.amber,
+        error: colors.red,
+        success: colors.green,
+      },
+    },
   },
   variants: {},
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],

@@ -1,9 +1,29 @@
-<h1>Hello World! Love Demo</h1>
-<p>Find me in app/views/demo/index.html.erb</p>
+<div class="-4">
+    <h1 class="my-3 text-3xl font-bold text-center p">Welcome to Simple CMS</h1>
+    <p class="my-2 text-center p">
+        Simple CMS is the sample project create/used while completing the <strong>Ruby On Rails</strong> Essential Training provided on Linked In by Kevin Skoglund. 
+    </p>
+    <p class="my-2 text-center p">
+        It's been a pretty good ride in getting familiar with Rails, Tailwind (extra) and Stimulus (extra).
+    </p>
+</div>
 
-<a href="/demo/hello">Hello HTML</a>
-<%= link_to('Hello Rails', {controller: 'demo', action: 'hello', name: 'Kenneth' }) %>
-<%= demo_hello_path %>
-
-<br/>
-<%= link_to('All Subjects', subjects_path) %>
+<div class="p-4">
+    <h1 class="my-3 text-3xl font-bold text-center">Recent Pages</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">    
+        <% @pages.each do |page| %>
+            <%= link_to(subject_page_path(page, page.subject), class: 'card-wrapper') do %>
+        <div class="rounded shadow hover:shadow-lg font-normal flex flex-col h-full">
+            <div class="p-3 flex-1">
+                <h5 class="text-lg font-bold"><%= page.name %></h5>
+                <p class="text-sm"><%= page.content %></p>
+            </div>
+            <div class="bg-gray-0 border-t-1 border-gray-100 p-3">
+                <div>Subject: <%= page.subject.name %></div>
+                <div>Created: <%= page.created_at.strftime("%d %b, %Y") %></div>
+            </div>
+        </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

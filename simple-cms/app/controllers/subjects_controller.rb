@@ -1,4 +1,6 @@
 class SubjectsController < ApplicationController
+  before_action :confirm_logged_in
+
   # index.html
   def index
     @subjects = Subject.order('position ASC')
@@ -17,6 +19,7 @@ class SubjectsController < ApplicationController
   def create    
     @subject = Subject.new(subject_params)
     if @subject.save
+      flash[:success] = "Subject #{@subject.name} was created successfully"
       redirect_to subjects_path
     else 
       render :new
@@ -31,6 +34,7 @@ class SubjectsController < ApplicationController
   def update 
     @subject = Subject.find(params[:id])
     if @subject.update(subject_params)
+      flash[:success] = "Subject #{@subject.name} was updated successfully"
       redirect_to subjects_path
     else 
       render :edit
@@ -40,9 +44,10 @@ class SubjectsController < ApplicationController
   def destroy
     @subject = Subject.find(params[:id])
     if @subject.destroy 
+      flash[:success] = "Subject #{@subject.name} was deleted successfully"
       redirect_to subjects_path 
     else 
-      flash :error, "Could not delete subject #{@subject.name}"
+      flash[:error] = "Could not delete subject #{@subject.name}"
       redirect_to subjects_path 
     end 
   end

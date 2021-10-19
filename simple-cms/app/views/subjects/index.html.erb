@@ -1,3 +1,5 @@
+<% content_for(:head_title) { "Subjects List" }%>
+
 <h2>All Subjects</h1>
 
 <p>
@@ -16,8 +18,8 @@
   <tr>
     <td><%= subject.position %></td>
     <td><%= subject.name %></td>
-    <td class="center"><%= subject.visible ? 'Yes' : 'No' %></td>
-    <td class="center"><%= subject.pages.size %></td>
+    <td class="center"><%= status_tag(subject.visible, { true_text: 'Yes', false_text: 'No' }) %></td>
+    <td class="center"><%= subject.pages.size %> <%= pluralize(subject.pages.size, 'Page') %></td>
     <td class="center">
       <%= link_to("Show", subject_path(subject), :class => 'action show') %>
       <%= link_to("Edit", edit_subject_path(subject), :class => 'action edit') %>

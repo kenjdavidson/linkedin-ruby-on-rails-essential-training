@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SimpleCms</title>
+    <title><%= "#{content_for?(:head_title) ? content_for(:head_title) : 'Simple CMS'} - Rails Essential Training"%></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,8 +11,86 @@
   </head>
 
   <body>
-    <div class="container mx-auto">
-      <%= yield %>
-    </div>
+    <div class="w-full min-h-screen flex flex-col bg-gray-50">      
+      <header>
+        <div id="navbar-wrapper">
+          <div id="navbar">
+            <div>
+              <p class="text-lg font-bold">
+                <%= link_to("Simple CMS", root_path) %>
+              </p>
+            </div>
+            <div>
+              <% if @username != nil %>
+                <p>
+                  <span class="font-bold">
+                    <%= "Hello, #{@username}." %> 
+                    <%= link_to(logout_path, method: :delete) do %>
+                      <%= image_tag("icon_logoff.png", size: "16x16", title: "Logout", class: "inline m-2") %>
+                    <% end %>
+                  </span>
+                </p>
+              <% else %>
+                <p class="font-bold">Welcome Guest!
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="container mx-auto my-7 flex-1">
+        <%= yield %>
+      </div>
+      <footer class="bg-gray-200 white">
+        <% if content_for?(:footer) %>
+        <div class="container mx-auto border-b border-gray-300 p-4">
+          <% content_for(:footer) %>
+        </div>
+        <% end %>
+        <div class="container mx-auto p-4 flex flex-row"> 
+          <div class="flex-1 p-3">
+            <h4 class="font-bold pb-5">Simple CMS</h4>
+            <p>
+              This is the on going <strong>Simple CMS</strong> project developed across all the <strong>Rails Essential Training</strong> on 
+              Linked In.
+            </p>
+          </div>
+          <div class="flex-1 p-3">
+            <h4 class="font-bold pb-5">Tailwind &amp; Stimulus</h4>
+            <p>
+              In addition to the standard training; I've attempted to add in:              
+            </p>
+            <p>
+              <ul>
+                <li><a href="https://tailwindcss.com/">Tailwind CSS</a> - for styling</li>
+                <li><a href="https://stimulus.hotwired.dev/">Stimulus</a> - to provide some JavaScript fun</li>
+              </ul>
+            </p>
+            <p>
+              This was probably done in not the best way, but for now it works!  For example:              
+            </p>
+            <p>
+              <ul>
+                <li>Need to update Tailwind default styles</li>
+                <li>Look into best practices for splitting CSS files (components?)</li>      
+              </ul>
+            </p>
+          </div>
+          <div class="flex-1 p-3">
+            <h4 class="font-bold pb-5">Custom Footer</h4>
+            <p>
+              Each action can add a custom footer section by adding <code>content_for(:footer)</code> which will be placed above.  It will be 
+              wrapped in a standard bordered container.
+            </p>
+          </div>                    
+        </div>
+        <div class="container mx-auto border-t border-gray-300 p-4 flex flex-row justify-center"> 
+          <div class="text-sm"> 
+            Rails Essential Training with <span class="font-bold"><%= link_to("Kevin Skoglund", "https://www.linkedin.com/learning/instructors/kevin-skoglund") %></span>
+          </div>
+        </div>
+      </footer>
+    </div> <!-- wrapper -->
+
+    <%= render(partial: 'application/flash_messages') unless flash.empty? %>
   </body>
 </html>

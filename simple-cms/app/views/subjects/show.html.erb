@@ -1,3 +1,8 @@
+<% content_for(:head_title) { "Subject #{@subject.name}" }%>
+<% content_for(:footer) do %> 
+  <p>You can add or edit the subjects on this screen.</p>
+<% end %>
+
 <p>
 <%= link_to('<< Back to Subjects', subjects_path) %>
 </p>
@@ -11,11 +16,11 @@
   </tr>
   <tr>
     <th>Created</th>
-    <td><%= @subject.created_at %></td>
+    <td><%= @subject.created_at.strftime("%d %b, %Y") %></td>
   </tr>   
   <tr>
     <th>Updated</th>
-    <td><%= @subject.updated_at %></td>
+    <td><%= @subject.updated_at.strftime("%d %b, %Y") %></td>
   </tr>  
 </table>
 <p>

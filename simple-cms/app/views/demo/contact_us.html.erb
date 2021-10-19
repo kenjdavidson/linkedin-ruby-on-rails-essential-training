@@ -1,8 +1,10 @@
-<h1>Contact Us</h1>
-
-<p>Looking to get a hold of us, eh? Make sure you're calling the right number:</p>
-<p>Phone: <%= @country %> <%= @phone %></p>
-<p>Email: <%= mail_to('ken.j.davidson@live.ca') %></p>
-<br/>
-
-<p><%= link_to('About', { action: 'about' }) %></p>
+<div class="p-4 flex flex-col lg:flex-row">
+    <div class="flex-1">
+        <h1 class="my-2 text-2xl font-bold">Contact Us</h1>
+        <p>Looking to get a hold of us, eh? Make sure you're calling the right number:</p>
+        <p>Phone: <%= @country %> <%= @phone %></p>
+        <p>Email: <%= mail_to('ken.j.davidson@live.ca') %></p>
+        <br>
+        <p><%= link_to('About', { action: 'about' }) %></p>
+    </div>    
+</div>

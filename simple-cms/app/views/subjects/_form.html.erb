@@ -10,7 +10,7 @@
     <td><%= f.number_field(:position) %></td>
   </tr>
   <tr>
-    <th>Visible</th>
-    <td><%= f.check_box(:visible) %></td>
+    <th><%= f.label(:visible)%></th>
+    <td>Visible: <%= f.radio_button(:visible, true) %> Hidden: <%= f.radio_button(:visible, false) %></td>
   </tr>
 </table>

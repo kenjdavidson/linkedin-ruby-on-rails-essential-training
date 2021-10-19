@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :get_subject
+  before_action :confirm_logged_in, :get_subject
 
   # new.html
   def new
@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
     @page.subject = @subject
     if @page.save
+      flash[:success] = "Page #{@page.name} was created successfully"
       redirect_to subject_path(@subject)
     else
       render :new 
@@ -25,6 +26,7 @@ class PagesController < ApplicationController
   def update 
     @page = Page.find(params[:id])
     if @page.update(page_params)
+      flash[:success] = "Page #{@page.name} was updated successfully"
       redirect_to subject_path(@subject)
     else 
       render :edit
@@ -32,8 +34,10 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:id])    
     @page.destroy
+    flash[:success] = "Page #{@page.name} was deleted successfully"
+    redirect_to subject_path(@subject)
   end
 
 private

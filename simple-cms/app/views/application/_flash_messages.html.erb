@@ -1,0 +1,8 @@
+<div data-controller="flash-notices" class="flash-notices my-2 fixed bottom-0 right-0 left-0">
+    <% flash.each do |key, value| %>
+    <div data-controller="flash-notice" class="flash-notice container mx-auto bg-<%= key %>-100 border-2 border-<%= key %>-100 shadow rounded mb-2 px-3 py-4 flex">
+        <div class="flex-grow"><p class="m-1 p-1"><%= value %></p></div>
+        <div class="flex-none"><button  data-action="click->flash-notice#closeNotice" class="m-1 p-1">X</button></div>
+    </div>
+    <% end %>
+</div>

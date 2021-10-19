@@ -1,3 +1,5 @@
+<% content_for(:head_title) { "Edit Page #{@page.name}" }%>
+
 <p>
 <%= link_to("<< Back to #{@subject.name}", subject_path(@subject)) %>
 </p>

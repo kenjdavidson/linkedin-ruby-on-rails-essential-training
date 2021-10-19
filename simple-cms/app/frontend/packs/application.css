@@ -18,5 +18,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "styles/headings";
+@import "styles/as";
 @import "styles/buttons";
+@import "styles/header";
+@import "styles/lists";
+@import "styles/headings";

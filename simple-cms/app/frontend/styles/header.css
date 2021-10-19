@@ -1,0 +1,13 @@
+header {
+    @apply bg-cover bg-center shadow;
+    min-height: 350px;
+    background-image: url("~golf-course-stock");
+}
+
+#navbar-wrapper {
+    @apply bg-gray-200 bg-opacity-50;
+}
+
+#navbar {
+    @apply container mx-auto py-4 flex justify-between;
+}

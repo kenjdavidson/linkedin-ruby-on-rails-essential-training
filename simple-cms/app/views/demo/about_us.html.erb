@@ -1,9 +1,16 @@
-<h1>About Us</h1>
-
-<p>Thanks for swinging by.  We're all learning Ruby on Rails which seems fun.</p>
-<p>If you'd like to get more information please call us:</p>
-<br>
-<p><%= link_to('In Canada', { action: 'contact', country: 'ca' }) %></p>
-<p><%= link_to('In U.S.A', { action: 'contact', country: 'us' }) %></p>
-<p><%= link_to('In Britain', { action: 'contact', country: 'uk' }) %></p>
-<p><%= link_to('Other', { action: 'contact' }) %></p>
+<div class="p-4 flex flex-col lg:flex-row">
+    <div class="flex-1">
+        <h1 class="my-2 text-2xl font-bold">About Us</h1>
+        <p>Thanks for swinging by.  We're all learning Ruby on Rails which seems fun.</p>
+        <p>If you'd like to get more information please call us:</p>
+        <br>
+        <p><%= link_to('In Canada', { action: 'contact', country: 'ca' }) %></p>
+        <p><%= link_to('In U.S.A', { action: 'contact', country: 'us' }) %></p>
+        <p><%= link_to('In Britain', { action: 'contact', country: 'uk' }) %></p>
+        <p><%= link_to('Other', { action: 'contact' }) %></p>       
+    </div>    
+    <div class="flex-1">
+        <h1 class="my-2 text-2xl font-bold">Something Else Here</h1>        
+        <p>Lorem ipsum</p>
+    </div>       
+</div>

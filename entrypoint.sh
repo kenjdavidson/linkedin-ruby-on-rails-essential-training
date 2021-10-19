@@ -9,8 +9,8 @@ set -e
 
 # Start the Database on load
 service mysql start
-mysql -e "create database simple_cms_development"
-mysql -e "create user 'rails_user'@'localhost' identified by 'rails_user'"
+mysql -e "create database if not exists simple_cms_development"
+mysql -e "create user if not exists 'rails_user'@'localhost' identified by 'rails_user'"
 mysql -e "grant all privileges on simple_cms_development.* to 'rails_user'@'localhost'"
 
 # Run bundle install

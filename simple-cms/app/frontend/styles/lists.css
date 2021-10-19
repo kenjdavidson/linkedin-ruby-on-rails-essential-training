@@ -1,0 +1,7 @@
+ul {
+  @apply my-2;
+
+  li {
+    @apply list-disc list-inside;
+  }
+}

@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   # Demo
-  root 'application#index'
+  root 'demo#index'
 
-  # Resources
-  resources :subjects do 
-    resources :pages
-  end
-  
+  get 'about' => 'demo#about'
+  get 'contact-us' => 'demo#contact_us'
+
   # Resources do not have the extra delete that was added in previous lessons.  In most cases
   # this would be done with Javascript for confirmation.  This would only be required if there
   # were say other changes that were going to happen due to the deletion.  For example:
@@ -19,23 +17,19 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  # User Routes
-  get 'users/new'
-  get 'users/edit'
-  get 'users/login'
-  get 'users/logout'
-
-  # get 'pages/index'
-  # get 'pages/show'
-  # get 'pages/new'
-  # get 'pages/edit'
-  # get 'pages/delete'
-  # get 'subjects/index'
-  # get 'subjects/show'
-  # get 'subjects/new'
-  # get 'subjects/edit'
-  # get 'subjects/delete'
+  # Access Routes
+  # Important part here is the `resource` fakeout to get the access_path created (I think)
+  get 'menu' =>'access#menu'
+  get 'login' => 'access#new'
+  post 'access/new' => 'access#create'
+  delete 'logout' => 'access#destroy'
+ 
+  # Subject and Page Routes
+  resources :subjects do 
+    resources :pages
+  end
   
+
   # Default route
   get ':controller(/:action(/:id))'
 end

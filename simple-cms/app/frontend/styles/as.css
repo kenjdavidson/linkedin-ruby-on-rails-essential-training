@@ -1,0 +1,9 @@
+
+a {
+  @apply font-medium;
+  text-decoration: underline;
+}
+
+a.card-wrapper {
+  text-decoration: none;
+}
