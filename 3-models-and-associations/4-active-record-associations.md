@@ -184,3 +184,5 @@ Product.joins(:category).where(categories: { active: true })
 ```
 
 Will still return a list of `Product` objects.
+
+> `joins` uses the association from the `Model` while `where` uses the table name (plural)
